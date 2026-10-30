@@ -1,0 +1,19 @@
+<header>
+  <img src='./assets/Logo_Helpet.png' class="logo" alt="Logo" routerLink="/home"/>
+  <img src='./assets/Stylized_Helpet.png' class="title" alt="Helpet" routerLink="/home"/>
+  <nav class="navbar">
+
+    <ul class="menu">
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/articles">Articles</a></li>
+      <li><a routerLink="/forum">Forum</a></li>
+    </ul>
+
+
+    <div>
+      <button matFab (click)="goToUserProfile()" aria-label="Sign in or register here">
+        <mat-icon>person</mat-icon>
+      </button>
+    </div>
+  </nav>
+</header>
