@@ -1,0 +1,18 @@
+.article-card {
+  height: 550px;
+  width: auto;
+  border-radius: 25px;
+
+  background: #faae57;
+  background: linear-gradient(360deg, rgba(250, 174, 87, 0.96) 0%, rgba(255, 199, 137, 0.76) 100%);
+
+  margin-bottom:20px;
+  align-self:center;
+}
+
+img {
+  height: 100%;
+  width: auto;
+  background-size: cover;
+  align-self:center;
+}
