@@ -1,0 +1,10 @@
+<mat-card class="forum-card" appearance="outlined">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{ title() }}</mat-card-title>
+    <mat-card-subtitle>by {{ author() }}</mat-card-subtitle>
+  </mat-card-header>
+  @if (imageUrl()) {
+    <img [src]='imageUrl()' alt="Post image"/>
+  }
+</mat-card>

@@ -1,1 +1,15 @@
-<p>forum works!</p>
+<div class="forum-container">
+  <div class="central-container-forum">
+    <h1><u>Forum</u></h1>
+    <div class="posts">
+      @for (post of mockupPostData; track post.id) {
+          <app-forum-card
+            [title]="post.title"
+            [author]="post.author"
+            [imageUrl]="post.image"
+            routerLink=""/>
+      }
+
+    </div>
+  </div>
+</div>

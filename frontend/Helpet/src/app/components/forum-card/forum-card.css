@@ -1,0 +1,19 @@
+.forum-card {
+  height: auto;
+  width: 602px;
+  border-radius: 25px;
+
+  background: #7a9beb;
+  background: linear-gradient(360deg, rgb(52 102 216 / 0.85) 0%, rgb(122 155 235 / 0.75) 100%);
+
+  margin-bottom:20px;
+  align-self:center;
+}
+
+img {
+  height: 100%;
+  width: auto;
+  background-size: cover;
+  align-self:center;
+  border-radius: 15px;
+}

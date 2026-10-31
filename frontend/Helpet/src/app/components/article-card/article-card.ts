@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { MatCard, MatCardAvatar, MatCardHeader, MatCardImage, MatCardSubtitle, MatCardTitle } from '@angular/material/card';
+import { MatCard, MatCardAvatar, MatCardHeader, MatCardSubtitle, MatCardTitle } from '@angular/material/card';
 
 @Component({
   imports: [
     MatCard,
-    MatCardImage,
     MatCardAvatar,
     MatCardHeader,
     MatCardTitle,
