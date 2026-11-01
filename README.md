@@ -1,5 +1,5 @@
 # Helpet (Web)
-The Web version of Helpet, a website designed to help owners with getting information for their little critters without having to make sure that the information you get is safe.
+The Web version of Helpet, a website designed to help owners with getting information for their little critters without having to do multiple searches to make sure that the information you get is safe.
 This webpage is still on a prototyped version, as the connection to the database and other things haven't been added yet.
 
 ## How To Install
