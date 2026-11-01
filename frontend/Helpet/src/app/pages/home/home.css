@@ -1,0 +1,44 @@
+.home-container{
+  background-color: #FAFDFF;
+  opacity: 0.8;
+  background: repeating-linear-gradient( 45deg, #95d395, #95d395 5px, #E5E5F7 5px, #E5E5F7 25px );
+
+  width:100%;
+  height:100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+.central-container-home {
+  height: 100%;
+  width: 80%;
+  background-color: #FAFDFF;
+  padding: 20px;
+}
+
+
+.featured-article {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.my-forum-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+button {
+  background: #6FE66FFF;
+  background: linear-gradient(360deg, rgb(111 230 111) 0%, rgb(149 211 149) 100%);
+  border-radius:10%;
+  width:auto;
+  justify-self: center;
+  font-size: 16pt;
+  padding: 10px;
+}

@@ -4,12 +4,11 @@
     <div class="posts">
       @for (post of mockupPostData; track post.id) {
           <app-forum-card
+            [id]="post.id"
             [title]="post.title"
             [author]="post.author"
-            [imageUrl]="post.image"
-            routerLink=""/>
+            [imageUrl]="post.imageUrl"/>
       }
-
     </div>
   </div>
 </div>

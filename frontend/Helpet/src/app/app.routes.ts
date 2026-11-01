@@ -6,10 +6,16 @@ import { MyForum } from './pages/my-forum/my-forum';
 import { User } from './pages/user/user';
 import { NotFound } from './pages/not-found/not-found';
 import { ArticleDetailed } from './pages/articles/article-detailed/article-detailed';
+import { PostView } from './pages/forum/post-view/post-view';
+import { MapComponent } from './pages/map/map';
 
 export const routes: Routes = [
   {
     path: '',
+    component: Home
+  },
+  {
+    path: 'home',
     component: Home
   },
   {
@@ -29,8 +35,12 @@ export const routes: Routes = [
     component: MyForum
   },
   {
+    path: 'post/:id',
+    component: PostView
+  },
+  {
     path: 'map',
-    component: Map
+    component: MapComponent
   },
   {
     path: 'user',

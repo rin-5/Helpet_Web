@@ -1,10 +1,23 @@
-<div class="forum-container">
-  <div class="central-container-forum">
+<div class="post-container">
+  <div class="central-container-post">
     <div class="op">
-
+      @if (post(); as currentPost) {
+        <h1>{{currentPost.title}}</h1>
+        <h2>by {{currentPost.author}}</h2>
+        @if (currentPost.imageUrl) {
+          <img [src]="currentPost.imageUrl" alt="Post image">
+        }
+        <div class="content">
+          <p>{{currentPost.description}}</p>
+        </div>
+      }
     </div>
-    <div class="posts">
-
+    <div class="replies">
+      <h1><u>Replies</u></h1>
+      <div class="reply">
+        <h2>from someOtherUser</h2>
+        <p>This is a test reply. Once the DB has been created, this will be replaced by a corresponding component.</p>
+      </div>
     </div>
   </div>
 </div>

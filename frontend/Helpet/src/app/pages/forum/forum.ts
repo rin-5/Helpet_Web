@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ForumCard } from '../../components/forum-card/forum-card';
+import { PostService } from '../../services/post-service/post-service';
 
 @Component({
   imports: [ForumCard],
@@ -8,23 +9,9 @@ import { ForumCard } from '../../components/forum-card/forum-card';
   templateUrl: './forum.html',
 })
 export class Forum {
-  mockupPostData = [
-    {
-      id: 1,
-      title: 'Post With Image Mockup',
-      author: 'someAuthor',
-      image: './assets/card_test.png',
-    },
-    {
-      id: 1,
-      title: 'Post Without Image Mockup',
-      author: 'someAuthor'
-    },
-    {
-      id: 1,
-      title: 'Post With Image Mockup 2',
-      author: 'someAuthor',
-      image: './assets/card_test.png',
-    },
-  ];
+  postService = inject(PostService);
+
+  get mockupPostData() {
+    return this.postService.getPosts();
+  }
 }
