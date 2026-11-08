@@ -8,6 +8,8 @@ import { NotFound } from './pages/not-found/not-found';
 import { ArticleDetailed } from './pages/articles/article-detailed/article-detailed';
 import { PostView } from './pages/forum/post-view/post-view';
 import { MapComponent } from './pages/map/map';
+import { SignUp } from './pages/sign-up/sign-up';
+import { SignIn } from './pages/sign-in/sign-in';
 
 export const routes: Routes = [
   {
@@ -45,6 +47,14 @@ export const routes: Routes = [
   {
     path: 'user',
     component: User
+  },
+  {
+    path: 'sign-up',
+    component: SignUp
+  },
+  {
+    path: 'sign-in',
+    component: SignIn
   },
   {
     path: '**',

@@ -12,7 +12,10 @@
 
 
     <div>
-      <button matFab (click)="openSnackBarWip()" aria-label="Sign in or register here">
+      @if(isSignedIn()){
+
+      }
+      <button matFab (click)="goToSignIn()" aria-label="Sign in or register here">
         <mat-icon>person</mat-icon>
       </button>
     </div>
