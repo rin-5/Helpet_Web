@@ -18,10 +18,8 @@ export class Header {
   service = inject(AuthService);
   durationInSeconds = 5;
 
-  isSignedIn(): boolean {
-    let signStatus:boolean = this.service.isSignedIn;
-    return signStatus;
-  }
+  readonly signStatus = this.service.isSignedIn;
+
   goToUserProfile(): void {
     this.router.navigate(['/user']);
   }

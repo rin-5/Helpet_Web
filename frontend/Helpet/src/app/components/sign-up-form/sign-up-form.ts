@@ -65,6 +65,7 @@ export class SignUpForm {
         next: (response) => {
           console.log('Account registered successfully!');
           this.openSnackBar('Account registered successfully! Redirecting to the View page...');
+          this.service.isSignedIn.set(true);
           this.goHome();
         },
         error: (error) => {

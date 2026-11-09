@@ -4,18 +4,15 @@ import { AuthService } from '../../services/auth-service';
 import { Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
-import { MatIcon } from '@angular/material/icon';
-import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   imports: [
     MatFormField,
     MatLabel,
-    MatIcon,
     RouterLink,
     MatButton,
     ReactiveFormsModule,
-    MatIconButton,
     MatInput,
   ],
   selector: 'app-sign-in-form',
@@ -30,10 +27,10 @@ export class SignInForm {
 
   userAuthLoginForm = new FormGroup({
     username: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-    password: new FormControl('', {
+    pwd: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(8)],
-    }),
+    })
   });
 
   hide = signal(true);
@@ -55,8 +52,9 @@ export class SignInForm {
     if (this.userAuthLoginForm.valid) {
       this.service.signIn(this.userAuthLoginForm.value).subscribe({
         next: (response) => {
-          console.log('Log-in successful!\n ' + response);
+          console.log('Log-in successful!\n ', response);
           this.openSnackBar('Log-in successful! Redirecting to the View page...');
+          this.service.isSignedIn.set(true);
           this.goHome();
         },
         error: (error) => {

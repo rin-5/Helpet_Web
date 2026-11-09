@@ -11,7 +11,7 @@
     </ul>
 
     <div>
-      @if(isSignedIn()){
+      @if(signStatus()){
         <button matFab (click)="goToUserProfile()" aria-label="Sign in or register here">
           <mat-icon>person</mat-icon>
         </button>
