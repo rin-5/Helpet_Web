@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatError, MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
@@ -17,25 +17,31 @@ import { MatIcon } from '@angular/material/icon';
     MatButton,
     RouterLink,
     MatIcon,
+    MatError,
   ],
   selector: 'app-sign-up-form',
   styleUrl: './sign-up-form.css',
   templateUrl: './sign-up-form.html',
+  standalone: true,
 })
 export class SignUpForm {
+  txtErrorName = signal('');
+  txtErrorMail = signal('');
+  txtErrorUsername = signal('');
+  txtErrorPassword = signal('');
+
   private service = inject(AuthService);
   private snackBar = inject(MatSnackBar);
   private router = inject(Router);
 
   userAuthRegisterForm = new FormGroup({
     username: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-    email: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-    fullname: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-    password: new FormControl('', {
+    mail: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    nombre: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    pwd: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(8)],
-    }),
-    role: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    })
   });
   hide = signal(true);
 
@@ -50,7 +56,7 @@ export class SignUpForm {
     this.snackBar.open(message, '', config);
   }
   goHome(): void {
-    this.router.navigate(['/home']).then();
+    this.router.navigate(['/home']);
   }
 
   onSubmit(): void {
@@ -62,7 +68,7 @@ export class SignUpForm {
           this.goHome();
         },
         error: (error) => {
-          console.error('Registration error: ' + error);
+          console.error('Registration error: ', error);
           this.openSnackBar(
             "We weren't able to create your account. Please check the credentials and try again.",
           );

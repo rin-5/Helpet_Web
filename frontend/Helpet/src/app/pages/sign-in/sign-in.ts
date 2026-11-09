@@ -7,5 +7,6 @@ import { SignInForm } from '../../components/sign-in-form/sign-in-form';
   selector: 'app-sign-in',
   styleUrl: './sign-in.css',
   templateUrl: './sign-in.html',
+  standalone: true,
 })
 export class SignIn {}

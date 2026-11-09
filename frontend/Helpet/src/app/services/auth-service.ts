@@ -13,19 +13,29 @@ export class AuthService {
   http = inject(HttpClient);
 
   signIn(data: any): Observable<any> {
-    return this.http.post(`${this.API_BASE_URL}/${this.SIGNIN_URL}`, data).pipe(
+    return this.http.post(`${this.API_BASE_URL}/${this.SIGNIN_URL}`, data, {withCredentials: true}).pipe(
       tap((response: any) => {
         localStorage.setItem('token', response.token);
         this.isSignedIn = true;
+
+
+        if (response && response.token) {
+          localStorage.setItem('token', response.token);
+        }
       }),
     );
   }
 
   register(data: any): Observable<any> {
-    this.isSignedIn = true;
     return this.http
-      .post(`${this.API_BASE_URL}/${this.REGISTER_URL}`, data)
-      .pipe(tap((response: any) => {}));
+      .post(`${this.API_BASE_URL}/${this.REGISTER_URL}`, data, {withCredentials: true})
+      .pipe(tap((response: any) => {
+        this.isSignedIn = true;
+
+        if (response && response.token) {
+          localStorage.setItem('token', response.token);
+        }
+      }));
   }
 }
 

@@ -21,6 +21,7 @@ import { MatButton, MatIconButton } from '@angular/material/button';
   selector: 'app-sign-in-form',
   styleUrl: './sign-in-form.css',
   templateUrl: './sign-in-form.html',
+  standalone: true,
 })
 export class SignInForm {
   private service = inject(AuthService);

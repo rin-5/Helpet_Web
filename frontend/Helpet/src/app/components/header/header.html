@@ -10,14 +10,16 @@
       <li><a routerLink="/forum">Forum</a></li>
     </ul>
 
-
     <div>
       @if(isSignedIn()){
-
+        <button matFab (click)="goToUserProfile()" aria-label="Sign in or register here">
+          <mat-icon>person</mat-icon>
+        </button>
+      } @else {
+        <button matFab (click)="goToSignIn()" aria-label="Sign in or register here">
+          <mat-icon>person</mat-icon>
+        </button>
       }
-      <button matFab (click)="goToSignIn()" aria-label="Sign in or register here">
-        <mat-icon>person</mat-icon>
-      </button>
     </div>
   </nav>
 </header>

@@ -4,20 +4,29 @@
     <mat-form-field class="register-full-width">
       <mat-label>Username</mat-label>
       <input id="username" formControlName="username" type="text" matInput placeholder="Type in your username">
+      @if (userAuthRegisterForm.controls.username.invalid) {
+        <mat-error>{{ txtErrorUsername() }}</mat-error>
+      }
     </mat-form-field>
     <mat-form-field class="register-full-width">
       <mat-label>E-Mail Address</mat-label>
-      <input id="email" formControlName="email" type="email" matInput placeholder="Type in your e-mail address..">
+      <input id="email" formControlName="mail" type="mail" matInput placeholder="Type in your e-mail address..">
+      @if (userAuthRegisterForm.controls.mail.invalid) {
+        <mat-error>{{ txtErrorMail() }}</mat-error>
+      }
     </mat-form-field>
     <mat-form-field class="register-full-width">
       <mat-label>Full Name</mat-label>
-      <input id="full-name" formControlName="fullname" type="text" matInput placeholder="Type in your full name.">
+      <input id="full-name" formControlName="nombre" type="text" matInput placeholder="Type in your full name.">
+      @if (userAuthRegisterForm.controls.nombre.invalid) {
+        <mat-error>{{ txtErrorName() }}</mat-error>
+      }
     </mat-form-field>
 
     <br>
     <mat-form-field class="register-full-width">
       <mat-label>Enter your password</mat-label>
-      <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
+      <input matInput [type]="hide() ? 'password' : 'text'" formControlName="pwd"/>
       <button
         matIconButton
         matSuffix
@@ -25,12 +34,15 @@
         [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hide()"
       >
-        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
+      @if (userAuthRegisterForm.controls.pwd.invalid) {
+        <mat-error>{{ txtErrorPassword() }}</mat-error>
+      }
     </mat-form-field>
 
     <br>
-    <button type="submit" mat-raised-button>Submit</button>
+    <button type = 'submit' mat-raised-button [disabled]="userAuthRegisterForm.invalid">Submit</button>
     <br><br>
     <a routerLink="/sign-in">Already have an account? Sign in here!</a>
   </form>

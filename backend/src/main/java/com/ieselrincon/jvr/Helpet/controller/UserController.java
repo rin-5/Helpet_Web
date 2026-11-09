@@ -44,7 +44,7 @@ public class UserController {
 
 
     @PostMapping("/sign-in")
-    ResponseEntity<User> signIn(@RequestBody UserDto.UserRegistrationRequest request, HttpServletResponse response) {
+    ResponseEntity<?> signIn(@RequestBody UserDto.UserRegistrationRequest request, HttpServletResponse response) {
         AuthenticationManager authManager = authenticationConfiguration.getAuthenticationManager();
 
         Authentication auth = authManager.authenticate(
@@ -63,9 +63,9 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    ResponseEntity<User> register(@RequestBody UserDto.UserRegistrationRequest request) {
+    ResponseEntity<?> register(@RequestBody UserDto.UserRegistrationRequest request) {
         if (userRepository.findByUsername(request.username()).isPresent()) {
-            return ResponseEntity.badRequest().body((User) Map.of("message", "This username is already taken."));
+            return ResponseEntity.badRequest().body(Map.of("message", "This username is already taken."));
         }
 
         User newUser = new User();
@@ -77,7 +77,7 @@ public class UserController {
 
         String token = userAuthService.generateToken(newUser.getUsername());
 
-        return ResponseEntity.ok((User)Map.of("message","User created successfully!", "token", token));
+        return ResponseEntity.ok(Map.of("message","User created successfully!", "token", token));
     }
 
 }
