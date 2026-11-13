@@ -4,6 +4,7 @@ import com.ieselrincon.jvr.Helpet.dto.ArticleDto;
 import com.ieselrincon.jvr.Helpet.entities.Article;
 import com.ieselrincon.jvr.Helpet.repository.ArticleRepository;
 import jakarta.persistence.criteria.Predicate;
+import org.jspecify.annotations.NonNull;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -40,18 +41,32 @@ public class ArticleService {
 
     }
 
+    //In a real app, these following functions can only be performed by users with permissions to create articles.
     public Article createArticle(ArticleDto.articlePayload payload) {
-        var article = new Article();
-        article.setId(null);
-        article.setAuthor(payload.author());
-        article.setCategory(payload.category());
-        article.setTitle(payload.title());
-        article.setText(payload.text());
-        if(!payload.imageUrl().isEmpty()) {
-            article.setImageUrl(payload.imageUrl());
-        }
-
-        return articleRepository.save(article);
+        var art = new Article();
+        art.setId(null);
+        return setArticleParams(payload, art);
     }
 
+    @NonNull
+    private Article setArticleParams(ArticleDto.articlePayload payload, Article art) {
+        art.setAuthor(payload.author());
+        art.setCategory(payload.category());
+        art.setTitle(payload.title());
+        art.setText(payload.text());
+        if(!payload.imageUrl().isEmpty()) {
+            art.setImageUrl(payload.imageUrl());
+        }
+
+        return articleRepository.save(art);
+    }
+
+    public Article updateArticle(long id, ArticleDto.articlePayload payload) {
+        Article art = articleRepository.findById(Math.toIntExact(id)).orElseThrow(() -> new RuntimeException("Article not found."));
+        return setArticleParams(payload, art);
+    }
+
+    public void deleteArticle(long id) {
+        articleRepository.deleteById(Math.toIntExact(id));
+    }
 }
