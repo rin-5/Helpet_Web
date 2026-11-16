@@ -18,8 +18,11 @@ public class UserAuthService implements UserDetailsService {
     private final String SECRET_STRING = "highly-secure-and-splendiferous-key-that-isnt-that-secure-and-long";
 
 
-    public UserRepository userRepository;
+    private final UserRepository userRepository;
 
+    public UserAuthService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
     public String generateToken(String username) {
         SecretKey key = Keys.hmacShaKeyFor(SECRET_STRING.getBytes());
         return Jwts.builder()

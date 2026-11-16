@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.Duration;
+import java.time.temporal.ChronoUnit;
 import java.util.Map;
 
 @RestController
@@ -56,10 +57,10 @@ public class UserController {
                 .httpOnly(true)
                 .secure(true)
                 .sameSite("Strict")
-                .maxAge(Duration.ofMinutes(90))
+                .maxAge(Duration.of(1, ChronoUnit.DAYS).toSeconds())
                 .build();
         response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
-        return ResponseEntity.ok((User)Map.of("message", "Sign in successful!"));
+        return ResponseEntity.ok(Map.of("message", "Sign in successful!"));
     }
 
     @PostMapping("/register")

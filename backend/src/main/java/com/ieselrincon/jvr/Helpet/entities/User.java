@@ -19,7 +19,7 @@ public class User {
     @Column(name = "pwd", nullable = false, length = 70)
     private String pwd;
 
-    @Column(name = "mail", nullable = false, length = 80)
+    @Column(name = "mail", nullable = false, unique = true, length = 80)
     private String mail;
 
     public Integer getId() {
