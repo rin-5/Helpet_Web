@@ -18,7 +18,7 @@ import java.io.IOException;
 @Component
 public class CookieAuthenticationFilter extends OncePerRequestFilter {
 
-    private final UserAuthService service;
+    private UserAuthService service;
 
     public CookieAuthenticationFilter(UserAuthService service) {
         this.service = service;
