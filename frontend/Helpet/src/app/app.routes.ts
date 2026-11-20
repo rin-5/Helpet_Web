@@ -25,7 +25,7 @@ export const routes: Routes = [
     component: Articles
   },
   {
-    path:'articles/view',
+    path:'articles/view/:id',
     component: ArticleDetailed
   },
   {

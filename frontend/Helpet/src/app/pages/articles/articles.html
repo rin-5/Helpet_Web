@@ -2,9 +2,14 @@
   <div class="central-container-articles">
     <h1><u>Articles</u></h1>
     <div class="articles">
-      <app-article-card routerLink="./view"/>
-      <app-article-card routerLink="./view"/>
-      <app-article-card routerLink="./view"/>
+      @for (article of mockupArticleData; track article.id) {
+        <app-article-card
+          [id]="article.id"
+          [author]="article.author"
+          [title]="article.title"
+          [category]="article.category"
+          [imageUrl]="article.imageUrl"/>
+      }
     </div>
   </div>
 </div>

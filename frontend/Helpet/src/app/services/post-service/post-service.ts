@@ -1,12 +1,6 @@
 import { Service, signal } from '@angular/core';
+import { Post } from '../../models/Post';
 
-export interface Post {
-  id: number;
-  title: string;
-  author: string;
-  description: string;
-  imageUrl?: string;
-}
 
 @Service()
 export class PostService {

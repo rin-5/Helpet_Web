@@ -1,6 +1,7 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
-import { Post, PostService } from '../../../services/post-service/post-service';
+import { PostService } from '../../../services/post-service/post-service';
 import { Router, RouterModule } from '@angular/router';
+import { Post } from '../../../models/Post';
 
 @Component({
   imports: [RouterModule],
@@ -17,8 +18,6 @@ export class PostView {
   post = computed<Post | undefined>(() => {
     const currentId = this.id();
 
-    console.log('Valor bruto de id():', currentId);
-    console.log('datatype:', typeof currentId);
     if (currentId === undefined || currentId === '') return undefined;
     const idNumeric = Number(currentId);
 
@@ -37,7 +36,6 @@ export class PostView {
         }
       }
     });
-
 
   }
 }
