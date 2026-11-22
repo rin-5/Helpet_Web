@@ -1,9 +1,42 @@
-import { Service, signal } from '@angular/core';
+import { inject, Service, signal } from '@angular/core';
 import { Article } from '../../models/Article';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
+import { ArticleDetailed } from '../../pages/articles/article-detailed/article-detailed';
 
 
 @Service()
 export class ArticleService {
+  private readonly API_BASE_URL = 'http://localhost:8080/api';
+  private readonly ARTICLE_ENDPOINT = 'articles';
+
+  private http: HttpClient = inject(HttpClient);
+  loadArticlePage(
+    filterParams: string,
+    page: number,
+    size: number,
+  ): Observable<{ list: Article[]; total: number }> {
+    const params = new HttpParams()
+      .set('searchTerm', filterParams)
+      .set('page', page.toString())
+      .set('size', size.toString());
+
+    return this.http
+      .get<Record<string, any>>(`${this.API_BASE_URL}/${this.ARTICLE_ENDPOINT}`, {
+        params,
+        withCredentials: true,
+      })
+      .pipe(
+        map((response) => ({
+          list: (response?.['content'] as Article[]) ?? [],
+          total: (response?.['totalElements'] as number) ?? 0,
+        })),
+      );
+  }
+
+  getById(id: number): Observable<Article> {
+    return this.http.get<Article>(`${this.API_BASE_URL}/${this.ARTICLE_ENDPOINT}/` + id);
+  }
   private mockupArticleData = signal<Article[]>([
     {
       id: 0,

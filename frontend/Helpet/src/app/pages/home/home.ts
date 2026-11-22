@@ -9,7 +9,7 @@ import {
 
 @Component({
   selector: 'app-home',
-  imports: [ArticleCard, MatFabButton],
+  imports: [MatFabButton],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

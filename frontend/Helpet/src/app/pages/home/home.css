@@ -42,3 +42,24 @@ button {
   font-size: 16pt;
   padding: 10px;
 }
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .home-container{
+    min-height: 100vh;
+  }
+  .central-container-home {
+    min-height: 100vh;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .home-container{
+    min-height: 100vh;
+  }
+  .central-container-home {
+    min-height: 100vh;
+  }
+}

@@ -11,7 +11,6 @@ import { NgOptimizedImage } from '@angular/common';
     MatCardTitle,
     MatCardSubtitle,
     RouterLink,
-    NgOptimizedImage,
   ],
   selector: 'app-article-card',
   styleUrl: './article-card.css',

@@ -1,15 +1,32 @@
 <div class="article-container">
   <div class="central-container-articles">
     <h1><u>Articles</u></h1>
+    <section class="search">
+      <mat-form-field>
+        <mat-label>Search an article</mat-label>
+        <input type="text" matInput placeholder="Find an article (ex. Dogs)" #filterInput />
+      </mat-form-field>
+      <button (click)="setFilter(filterInput.value)" mat-raised-button class="srch-btn">Filter</button>
+      <button (click)="resetFilters()" mat-raised-button class="srch-btn">Remove filters</button>
+    </section>
     <div class="articles">
-      @for (article of mockupArticleData; track article.id) {
+      @for (article of paginatedArticleList(); track article.id) {
         <app-article-card
           [id]="article.id"
           [author]="article.author"
           [title]="article.title"
           [category]="article.category"
           [imageUrl]="article.imageUrl"/>
-      }
+      } @empty {
+      <p>No matching article.</p>
+    }
     </div>
+    <mat-paginator
+      [length]="totalElements()"
+      [pageSize]="pageSize()"
+      [pageIndex]="pageIndex()"
+      [pageSizeOptions]="[10, 20, 50]"
+      (page)="onPageChange($event)">
+    </mat-paginator>
   </div>
 </div>
