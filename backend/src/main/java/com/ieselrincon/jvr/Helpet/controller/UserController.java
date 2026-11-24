@@ -60,7 +60,7 @@ public class UserController {
                 .maxAge(Duration.of(1, ChronoUnit.DAYS).toSeconds())
                 .build();
         response.addHeader(HttpHeaders.SET_COOKIE, cookie.toString());
-        return ResponseEntity.ok(Map.of("message", "Sign in successful!"));
+        return ResponseEntity.ok(Map.of("message", "Sign in successful!", "token", token));
     }
 
     @PostMapping("/register")

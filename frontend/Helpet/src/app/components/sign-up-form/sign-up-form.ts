@@ -4,7 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { AuthService } from '../../services/auth-service';
+import { AuthService } from '../../services/auth-service/auth-service';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({

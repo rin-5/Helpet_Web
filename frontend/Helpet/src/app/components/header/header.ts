@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFabButton } from '@angular/material/button';
 import { WipMessageAnnotatedComponent } from '../wip-message-annotated-component/wip-message-annotated-component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AuthService } from '../../services/auth-service';
+import { AuthService } from '../../services/auth-service/auth-service';
 import {ThemeToggle} from '../theme-toggle/theme-toggle';
 
 @Component({

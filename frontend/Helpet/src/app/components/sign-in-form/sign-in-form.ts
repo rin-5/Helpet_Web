@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { AuthService } from '../../services/auth-service';
+import { AuthService } from '../../services/auth-service/auth-service';
 import { Router, RouterLink } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';

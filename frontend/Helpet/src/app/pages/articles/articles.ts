@@ -56,7 +56,4 @@ export class Articles {
     this.pageIndex.set(event.pageIndex);
     this.pageSize.set(event.pageSize);
   };
-  get mockupArticleData() {
-    return this.articleService.getArticles();
-  }
 }
